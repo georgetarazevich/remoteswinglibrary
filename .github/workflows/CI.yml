@@ -30,11 +30,11 @@ jobs:
           echo pwd: $PWD
           # echo workspace: $(ls ${{ github.workspace }})
 
+          sudo apt-get install zip unzip
 
 
-          # cd $(~/)
-          # ls 
-          # $PWD
+
+
 
 
           # timestamp=timeStampFolder$(date +%s)
