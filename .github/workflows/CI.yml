@@ -38,11 +38,6 @@ jobs:
 
           sudo apt-get install unzip
 
-
-
-
-
-
           # timestamp=timeStampFolder$(date +%s)
           # mkdir $timestamp
           # cd $timestamp
@@ -96,7 +91,7 @@ jobs:
           # echo "docker ps"
           # /usr/bin/docker  ps
 
-          # sudo apt-get install x11-apps
+          sudo apt-get install x11-apps
 
           export DISPLAY=:0.0
           /home/verapdf/verapdf-gui 
