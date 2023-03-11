@@ -81,17 +81,17 @@ jobs:
           echo "veraPDF version: $VERSION"
           echo "veraPATH: $veraPATH   $PWD" 
           echo ls PWD: $(ls $PWD)
-          cd verapdf
-          echo verapdf PWD: $($PWD)
-          echo ls PWD: $(ls -la $PWD)
-          echo $("./verapdf --version")
+          # cd verapdf
+          echo verapdf dir: $(ls $PWD/verapdf)
+          # echo ls PWD: $(ls -la $PWD)
+          ./verapdf/verapdf --version
 
-          echo "Running regression-tests ..."
-          PATH="./bats:./bats/bin:$PATH"
-          echo "$PATH"
-          echo "PWD: "$PWD
-          echo list: $(ls ./)
-          echo workspace: $(ls ${{ github.workspace }})
+          # echo "Running regression-tests ..."
+          # PATH="./bats:./bats/bin:$PATH"
+          # echo "$PATH"
+          # echo "PWD: "$PWD
+          # echo list: $(ls ./)
+          # echo workspace: $(ls ${{ github.workspace }})
 
           # ${{ matrix.set_display }}
           # mvn clean verify -Dexcludes=Webstart
