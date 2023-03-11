@@ -84,7 +84,8 @@ jobs:
           # export DISPLAY=:99
           # sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
 
-          sudo apt install xvfb -y
+          # sudo apt install xvfb -y
+          sudo yum install Xvfb -y
 
           export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x16 -ac -noreset & sleep 3
           /home/verapdf/verapdf-gui        
