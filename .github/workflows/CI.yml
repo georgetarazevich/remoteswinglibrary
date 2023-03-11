@@ -34,7 +34,7 @@ jobs:
           echo workspace: $(ls ${{ github.workspace }})
 
 
-          timestamp=~/workspace/"$JOB_NAME"/timeStampFolder$(date +%s)
+          timestamp=timeStampFolder$(date +%s)
           mkdir $timestamp
           cd $timestamp
           echo "Performing veraPDF installation ... "
