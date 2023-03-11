@@ -30,7 +30,7 @@ jobs:
           echo pwd: $PWD
           # echo workspace: $(ls ${{ github.workspace }})
 
-          sudo apt update && sudo apt upgrade -y
+          sudo apt update -y
 
           sudo apt-get install unzip
 
