@@ -85,9 +85,9 @@ jobs:
           echo verapdf dir: $(ls $PWD/verapdf)
           # echo ls PWD: $(ls -la $PWD)
           ./verapdf/verapdf --version
-          
-          java --version
-          javac --version
+
+          java -version
+          javac -version
           python --version
 
           export DISPLAY=:0.0
