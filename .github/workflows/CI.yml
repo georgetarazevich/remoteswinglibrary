@@ -43,7 +43,8 @@ jobs:
           sudo apt update -y
           sudo apt install xvfb -y
 
-          sudo apt install python -y
+          sudo apt install python3 -y
+          sudo apt install -y python3-pip
           sudo pip install robotframework
 
           sudo apt-get install unzip
