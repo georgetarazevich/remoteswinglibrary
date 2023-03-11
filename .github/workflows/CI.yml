@@ -28,6 +28,8 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo pwd: $PWD
+          cd /home
+          echo pwd: $PWD
           # echo workspace: $(ls ${{ github.workspace }})
 
           sudo apt update -y
