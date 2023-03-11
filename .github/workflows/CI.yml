@@ -122,9 +122,12 @@ jobs:
           # mvn clean verify -Dexcludes=Webstart
 
           cd /__w/remoteswinglibrary/remoteswinglibrary/
-          PWD
-
+          $PWD
+         
           curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
+          
+          export CLASSPATH=.;./remoteswinglibrary-2.3.1.jar;
+          echo %CLASSPATH%
           ls
 
           # robot --version
