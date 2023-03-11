@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest"]
+        os: ["x11vnc/docker-desktop"]
         python-version: ["3.10"]
         include:
           - os: ubuntu-latest
@@ -91,7 +91,7 @@ jobs:
           python --version
           whoami 
 
-          sudo apt-get install x11-apps
+          # sudo apt-get install x11-apps
 
           export DISPLAY=:0.0
           ./verapdf/verapdf-gui 
