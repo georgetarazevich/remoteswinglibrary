@@ -72,8 +72,9 @@ jobs:
 
           echo "veraPDF version: $VERSION"
           echo "veraPATH: $veraPATH" 
+          cd verapdf
           echo ls PWD: $(ls $PWD)
-          echo $("./verapdf/verapdf --version")
+          echo $("./verapdf --version")
 
           echo "Running regression-tests ..."
           PATH="./bats:./bats/bin:$PATH"
