@@ -70,14 +70,14 @@ jobs:
           echo "Performing installation veraPDF ... "
           java -jar "$veraizpack" auto-install.xml
 
-          #Checking version
-          currentIFS=$IFS 
-          IFS='-'
-          read -r -a array <<< "$veradir"
-          VERSION="${array[2]}"
-          IFS=$currentIFS
+          # #Checking version
+          # currentIFS=$IFS 
+          # IFS='-'
+          # read -r -a array <<< "$veradir"
+          # # VERSION="${array[2]}"
+          # # IFS=$currentIFS
 
-          echo "veraPDF version: $VERSION"
+          # echo "veraPDF version: $VERSION"
           echo "veraPATH: $veraPATH   $PWD" 
           echo ls PWD: $(ls $PWD)
           # cd verapdf
