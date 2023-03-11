@@ -14,9 +14,11 @@ jobs:
       volumes:
         - my_docker_volume:/volume_mount
       options: --cpus 1
-
+      
     steps:
-      - uses: actions/checkout@v2
+      - name: Check for dockerenv file
+        run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
+
       - name: Set up Java 8
         uses: actions/setup-java@v1
         with:
@@ -91,8 +93,8 @@ jobs:
           javac -version
           whoami 
 
-          echo "docker ps"
-          /usr/bin/docker  ps
+          # echo "docker ps"
+          # /usr/bin/docker  ps
 
           # sudo apt-get install x11-apps
 
