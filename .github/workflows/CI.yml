@@ -36,6 +36,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo pwd: $PWD
+          echo dir: $(ls ./)
           cd /home
           echo pwd: $PWD
           # echo workspace: $(ls ${{ github.workspace }})
@@ -132,7 +133,7 @@ jobs:
           export CLASSPATH=.
           export CLASSPATH=$CLASSPATH:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
           export
-          echo dir: $(ls ./)
+          echo dir: $($PWD  ls ./)
 
           # robot --version
           robot ./sshtest.robot
