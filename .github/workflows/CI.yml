@@ -76,7 +76,8 @@ jobs:
           echo "veraPATH: $veraPATH   $PWD" 
           echo ls PWD: $(ls $PWD)
           cd verapdf
-          echo ls PWD: $(ls $PWD)
+          echo verapdf PWD: $($PWD)
+          echo ls PWD: $(ls -la $PWD)
           echo $("./verapdf --version")
 
           echo "Running regression-tests ..."
