@@ -91,6 +91,9 @@ jobs:
           javac -version
           whoami 
 
+          echo "docker ps"
+          /usr/bin/docker  ps
+
           # sudo apt-get install x11-apps
 
           export DISPLAY=:0.0
