@@ -34,6 +34,12 @@ jobs:
           echo workspace: $(ls ${{ github.workspace }})
 
 
+
+          cd /home/runner/work/
+          ls 
+          $PWD
+
+
           timestamp=timeStampFolder$(date +%s)
           mkdir $timestamp
           cd $timestamp
