@@ -121,6 +121,12 @@ jobs:
           # ${{ matrix.set_display }}
           # mvn clean verify -Dexcludes=Webstart
 
+          cd /__w/remoteswinglibrary/remoteswinglibrary/
+          PWD
+
+          curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
+          ls
+
           # robot --version
           robot /__w/remoteswinglibrary/remoteswinglibrary/
       # - name: Robot Framework
