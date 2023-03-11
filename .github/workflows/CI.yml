@@ -28,9 +28,6 @@ jobs:
       - name: Run tests on Linux
         if: runner.os == 'Linux'
         run: |
-          ${{ matrix.set_display }}
-          mvn clean verify -Dexcludes=Webstart
-
           echo Add other actions to build,
           echo test, and deploy your project.
           echo pwd: $PWD
@@ -83,6 +80,9 @@ jobs:
           echo "$PATH"
           echo "PWD: "$PWD
           echo workspace: $(ls ${{ github.workspace }})
+
+          # ${{ matrix.set_display }}
+          # mvn clean verify -Dexcludes=Webstart
 
       - name: Robot Framework
         uses: tarathep/robotframework-github-action@v1.0
