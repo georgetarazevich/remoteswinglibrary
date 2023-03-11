@@ -82,8 +82,8 @@ jobs:
 
           java -version
           javac -version
-          python --version
-          python -m pip list
+          python3 --version
+          python3 -m pip list
           whoami 
 
           # sudo apt-get install x11-apps
