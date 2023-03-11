@@ -25,10 +25,10 @@ jobs:
         with:
           java-version: 8
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10
+      # - name: Set up Python 3.10
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.10
 
       - name: Run tests on Linux
         if: runner.os == 'Linux'
@@ -42,6 +42,9 @@ jobs:
 
           sudo apt update -y
           sudo apt install xvfb -y
+
+          sudo apt install python -y
+          sudo pip install robotframework
 
           sudo apt-get install unzip
 
