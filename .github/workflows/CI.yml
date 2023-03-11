@@ -121,7 +121,7 @@ jobs:
           # ${{ matrix.set_display }}
           # mvn clean verify -Dexcludes=Webstart
 
-          robot --version
+          # robot --version
           robot /__w/remoteswinglibrary/remoteswinglibrary/
       # - name: Robot Framework
       #   uses: tarathep/robotframework-github-action@v1.0
