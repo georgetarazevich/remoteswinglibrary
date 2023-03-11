@@ -79,6 +79,13 @@ jobs:
 
           # export DISPLAY=:0.0
           # export DISPLAY=:99.0
+# https://github.com/hajimehoshi/ebiten/issues/939
+      # - name: Test
+      #   env:
+      #     DISPLAY: ":99.0"
+      #   run: |
+      #     xvfb-run --auto-servernum  go test -race -v ./...
+
       
       - name: Running verapdf-gui 
         run: |
@@ -90,7 +97,8 @@ jobs:
 
           export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x16 -ac -noreset & sleep 3
           echo "Running gui ..."
-          /home/verapdf/verapdf-gui        
+          /home/verapdf/verapdf-gui &
+          ps aux       
 
           echo "Running regression-tests ..."
           echo PATH: "$PATH"
