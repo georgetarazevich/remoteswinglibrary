@@ -31,18 +31,18 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo pwd: $PWD
-          echo workspace: $(ls ${{ github.workspace }})
+          # echo workspace: $(ls ${{ github.workspace }})
 
 
 
-          cd $(~/)
-          ls 
-          $PWD
+          # cd $(~/)
+          # ls 
+          # $PWD
 
 
-          timestamp=timeStampFolder$(date +%s)
-          mkdir $timestamp
-          cd $timestamp
+          # timestamp=timeStampFolder$(date +%s)
+          # mkdir $timestamp
+          # cd $timestamp
           echo "Performing veraPDF installation ... "
 
           echo "#Downloading veraPDF, latest dev version ... unziping to $PWD" 
