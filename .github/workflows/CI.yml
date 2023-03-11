@@ -72,9 +72,7 @@ jobs:
 
           echo "veraPDF version: $VERSION"
           echo "veraPATH: $veraPATH" 
-          echo "CurrentgDIR: $PWD
-          ../tools/verapdf-env.sh $timestamp
-          cd ~/workspace/"$JOB_NAME"
+
           echo "Running regression-tests ..."
           PATH="./bats:./bats/bin:$PATH"
           echo "$PATH"
@@ -84,5 +82,5 @@ jobs:
           # ${{ matrix.set_display }}
           # mvn clean verify -Dexcludes=Webstart
 
-      - name: Robot Framework
-        uses: tarathep/robotframework-github-action@v1.0
+      # - name: Robot Framework
+      #   uses: tarathep/robotframework-github-action@v1.0
