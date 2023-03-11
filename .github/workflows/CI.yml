@@ -100,6 +100,10 @@ jobs:
           /home/verapdf/verapdf-gui &
           ps aux       
 
+
+          java -jar /home/verapdf/bin/greenfield-apps-1.23.147.jar &
+          ps aux
+
           echo "Running regression-tests ..."
           echo PATH: "$PATH"
 
