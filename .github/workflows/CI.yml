@@ -48,7 +48,7 @@ jobs:
           cd "$veradir"
 
           #Definition of the Env variable
-          export veraPATH="${timestamp}/../verapdf"
+          export veraPATH="verapdf"
           echo "veraPATH: $veraPATH" 
 
           curl -LO  https://raw.githubusercontent.com/veraPDF/veraPDF-regression-tests/integration/tools/auto-install.xml
