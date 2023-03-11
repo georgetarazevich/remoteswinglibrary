@@ -25,6 +25,11 @@ jobs:
         with:
           java-version: 8
 
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+
       - name: Run tests on Linux
         if: runner.os == 'Linux'
         run: |
@@ -73,6 +78,8 @@ jobs:
 
           java -version
           javac -version
+          python --version
+          python -m pip list
           whoami 
 
           # sudo apt-get install x11-apps
@@ -110,5 +117,5 @@ jobs:
           # ${{ matrix.set_display }}
           # mvn clean verify -Dexcludes=Webstart
 
-      # - name: Robot Framework
-      #   uses: tarathep/robotframework-github-action@v1.0
+      - name: Robot Framework
+        uses: tarathep/robotframework-github-action@v1.0
