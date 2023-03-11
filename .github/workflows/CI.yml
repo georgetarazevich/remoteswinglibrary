@@ -89,8 +89,9 @@ jobs:
           java -version
           javac -version
           python --version
+          whoami 
 
-          apt-get install x11-apps
+          sudo apt-get install x11-apps
 
           export DISPLAY=:0.0
           ./verapdf/verapdf-gui 
