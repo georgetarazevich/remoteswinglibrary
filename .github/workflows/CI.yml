@@ -94,7 +94,7 @@ jobs:
           # sudo apt-get install x11-apps
 
           export DISPLAY=:0.0
-          ./verapdf/verapdf-gui 
+          /home/verapdf/verapdf-gui 
 
           # echo "Running regression-tests ..."
           # PATH="./bats:./bats/bin:$PATH"
