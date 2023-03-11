@@ -35,7 +35,7 @@ jobs:
 
 
 
-          cd /home/runner/work/
+          cd $(/home/runner/work/)
           ls 
           $PWD
 
