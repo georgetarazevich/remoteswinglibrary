@@ -15,6 +15,7 @@ jobs:
         - my_docker_volume:/volume_mount
       options: --cpus 1
       
+      
     steps:
       - name: Check for dockerenv file
         run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
@@ -38,9 +39,6 @@ jobs:
 
           sudo apt-get install unzip
 
-          # timestamp=timeStampFolder$(date +%s)
-          # mkdir $timestamp
-          # cd $timestamp
           echo "Performing veraPDF installation ... "
 
           echo "#Downloading veraPDF, latest dev version ... unziping to $PWD" 
@@ -69,39 +67,26 @@ jobs:
           echo "Performing installation veraPDF ... "
           java -jar "$veraizpack" auto-install.xml
 
-          # #Checking version
-          # currentIFS=$IFS 
-          # IFS='-'
-          # read -r -a array <<< "$veradir"
-          # # VERSION="${array[2]}"
-          # # IFS=$currentIFS
-
-          # echo "veraPDF version: $VERSION"
-          echo "veraPATH: $veraPATH   $PWD" 
-          echo ls PWD: $(ls $PWD)
-          # cd verapdf
           echo verapdf dir: $(ls /home/verapdf)
-          # echo ls PWD: $(ls -la $PWD)
           /home/verapdf/verapdf --version
 
           java -version
           javac -version
           whoami 
 
-          # echo "docker ps"
-          # /usr/bin/docker  ps
+          # sudo apt-get install x11-apps
 
-          sudo apt-get install x11-apps
+          # export DISPLAY=:0.0
+          # export DISPLAY=:99.0
+      
+      - name: Running verapdf-gui 
+        run: |
+          export DISPLAY=:99
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+          /home/verapdf/verapdf-gui        
 
-          export DISPLAY=:0.0
-          /home/verapdf/verapdf-gui 
-
-          # echo "Running regression-tests ..."
-          # PATH="./bats:./bats/bin:$PATH"
-          # echo "$PATH"
-          # echo "PWD: "$PWD
-          # echo list: $(ls ./)
-          # echo workspace: $(ls ${{ github.workspace }})
+          echo "Running regression-tests ..."
+          echo PATH: "$PATH"
 
           # ${{ matrix.set_display }}
           # mvn clean verify -Dexcludes=Webstart
