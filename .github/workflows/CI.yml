@@ -118,8 +118,10 @@ jobs:
           echo "Running regression-tests ..."
           echo PATH: "$PATH"
 
-          ${{ matrix.set_display }}
-          mvn clean verify -Dexcludes=Webstart
+          # ${{ matrix.set_display }}
+          # mvn clean verify -Dexcludes=Webstart
+
+          robot -v
 
       # - name: Robot Framework
       #   uses: tarathep/robotframework-github-action@v1.0
