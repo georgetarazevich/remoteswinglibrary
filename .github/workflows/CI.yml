@@ -26,9 +26,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Robot Framework
         uses: tarathep/robotframework-github-action@v1.0
-        with:
-          tests_dir: "${{ github.workspace }}/tests/robot"
-          reports_dir: "${{ github.workspace }}/tests/robot/reports"
 
       - name: Run tests on Linux
         if: runner.os == 'Linux'
