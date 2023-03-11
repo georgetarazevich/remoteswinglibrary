@@ -90,6 +90,8 @@ jobs:
           javac -version
           python --version
 
+          apt-get install x11-apps
+
           export DISPLAY=:0.0
           ./verapdf/verapdf-gui 
 
