@@ -24,8 +24,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Robot Framework
-        uses: tarathep/robotframework-github-action@v1.0
 
       - name: Run tests on Linux
         if: runner.os == 'Linux'
@@ -85,3 +83,6 @@ jobs:
           echo "$PATH"
           echo "PWD: "$PWD
           echo workspace: $(ls ${{ github.workspace }})
+
+      - name: Robot Framework
+        uses: tarathep/robotframework-github-action@v1.0
