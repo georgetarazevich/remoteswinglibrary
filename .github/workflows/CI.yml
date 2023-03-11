@@ -135,6 +135,6 @@ jobs:
           echo dir: $(ls ./)
 
           # robot --version
-          robot /__w/remoteswinglibrary/remoteswinglibrary/
+          robot ./sshtest.robot
       # - name: Robot Framework
       #   uses: tarathep/robotframework-github-action@v1.0
