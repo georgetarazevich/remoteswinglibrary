@@ -85,6 +85,12 @@ jobs:
           echo verapdf dir: $(ls $PWD/verapdf)
           # echo ls PWD: $(ls -la $PWD)
           ./verapdf/verapdf --version
+          
+          java --version
+          javac --version
+          python --version
+
+          export DISPLAY=:0.0
           ./verapdf/verapdf-gui 
 
           # echo "Running regression-tests ..."
