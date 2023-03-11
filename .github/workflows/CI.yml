@@ -133,6 +133,8 @@ jobs:
           echo setting classpath
           export CLASSPATH=.
           export CLASSPATH=$CLASSPATH:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
+          export PYTHONPATH=${PYTHONPATH}:./:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
+
           export
           echo dir: $($PWD  ls ./)
 
