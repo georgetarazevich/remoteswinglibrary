@@ -81,8 +81,9 @@ jobs:
       
       - name: Running verapdf-gui 
         run: |
-          export DISPLAY=:99
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+          # export DISPLAY=:99
+          # sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+          set_display: export DISPLAY=:99; Xvfb :99 -screen 0 1920x1080x24 -ac -noreset & sleep 3
           /home/verapdf/verapdf-gui        
 
           echo "Running regression-tests ..."
