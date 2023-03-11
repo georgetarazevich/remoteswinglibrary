@@ -83,9 +83,9 @@ jobs:
           echo "veraPATH: $veraPATH   $PWD" 
           echo ls PWD: $(ls $PWD)
           # cd verapdf
-          echo verapdf dir: $(ls $PWD/verapdf)
+          echo verapdf dir: $(ls /home/verapdf)
           # echo ls PWD: $(ls -la $PWD)
-          ./verapdf/verapdf --version
+          /home/verapdf/verapdf --version
 
           java -version
           javac -version
