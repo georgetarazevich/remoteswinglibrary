@@ -72,6 +72,7 @@ jobs:
 
           echo "veraPDF version: $VERSION"
           echo "veraPATH: $veraPATH" 
+          echo ls PWD: $(ls $PWD)
           cd verapdf
           echo ls PWD: $(ls $PWD)
           echo $("./verapdf --version")
@@ -80,6 +81,7 @@ jobs:
           PATH="./bats:./bats/bin:$PATH"
           echo "$PATH"
           echo "PWD: "$PWD
+          echo list: $(ls ./)
           echo workspace: $(ls ${{ github.workspace }})
 
           # ${{ matrix.set_display }}
