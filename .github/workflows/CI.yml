@@ -56,6 +56,8 @@ jobs:
           #Definition of the 'PATH' to install veraPDF using the auto-install.xml file
           sed -i '5 c\        <installpath>'$(echo $veraPATH)'</installpath>' ./auto-install.xml
 
+          echo $(cat auto-install.xml)
+
           veraizpack=$(ls | grep verapdf-izpack-installer)
           echo "veraizpack: $veraizpack"
 
@@ -71,7 +73,7 @@ jobs:
           IFS=$currentIFS
 
           echo "veraPDF version: $VERSION"
-          echo "veraPATH: $veraPATH" 
+          echo "veraPATH: $veraPATH   $PWD" 
           echo ls PWD: $(ls $PWD)
           cd verapdf
           echo ls PWD: $(ls $PWD)
