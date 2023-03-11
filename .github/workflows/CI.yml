@@ -121,14 +121,17 @@ jobs:
           # ${{ matrix.set_display }}
           # mvn clean verify -Dexcludes=Webstart
 
+          echo "cd to: /__w/remoteswinglibrary/remoteswinglibrary/"
+
           cd /__w/remoteswinglibrary/remoteswinglibrary/
-          $PWD
-         
+
+          echo pwd: $PWD
+          echo running curl ...
           curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
-          
+          echo setting classpath
           export CLASSPATH=.;./remoteswinglibrary-2.3.1.jar;
           echo %CLASSPATH%
-          ls
+          echo dir: $(ls ./)
 
           # robot --version
           robot /__w/remoteswinglibrary/remoteswinglibrary/
