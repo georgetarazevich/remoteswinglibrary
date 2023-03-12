@@ -20,7 +20,7 @@ Choose File From File Chooser
     Select Dialog    regexp=Error.*
     List Components In Context
     # pushButton    OptionPane.button
-    pushButton    OK1
+    pushButton    OK
     [Teardown]    System Exit
 
 Choose File From File Chooser v2
