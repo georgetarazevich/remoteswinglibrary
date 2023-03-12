@@ -135,7 +135,7 @@ jobs:
           robot  ./tests/*.robot
 
       - name: Generating report
-      - uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v1
         if: success() || failure()
         with:
           name: Results
