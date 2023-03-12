@@ -145,9 +145,9 @@ jobs:
       #     path: ~/download/path1
     # - name: Robot Framework
     #   uses: tarathep/robotframework-github-action@v1.0
+    
   generate_report:
     if: always()
-    needs: [jobs]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
