@@ -27,27 +27,26 @@ jobs:
         run: |
           echo pwd: $PWD
           echo dir: $(ls ./)
-          cd /home
-          echo pwd: $PWD
 
           sudo apt update -y
 
           sudo apt install xvfb -y
           sudo apt install python3 -y
-          sudo apt install -y python3-pip
-          sudo pip install robotframework
-          sudo apt-get install unzip
+          sudo apt install python3-pip -y 
+          sudo pip install robotframework 
+          sudo apt install unzip -y 
 
+          cd /home
+          echo pwd: $PWD
           echo "Performing veraPDF installation ... "
           echo "#Downloading veraPDF, latest dev version ... unziping to $PWD" 
           curl -LO https://software.verapdf.org/dev/verapdf-installer.zip
           unzip verapdf-installer.zip
 
-          #Definition of the variable, pointing to the veraPDF directory with installation files
+          echo "Definition of the variables"
           veradir=$(ls | grep verapdf-greenfield)
           cd "$veradir"
 
-          #Definition of the Env variable
           export veraPATH="/home/verapdf"
           echo "veraPATH: $veraPATH" 
 
@@ -77,13 +76,10 @@ jobs:
         run: |
           export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x16 -ac -noreset & sleep 3
 
-          echo "Running gui ..."
-          /home/verapdf/verapdf-gui &
-          ps aux       
-
+          echo "Running gui ..."      
           echo PATH: "$PATH"
-          echo "cd to: /__w/remoteswinglibrary/remoteswinglibrary/"
-          cd /__w/remoteswinglibrary/remoteswinglibrary/
+          echo "cd to: ${{ github.workspace }}"
+          cd ${{ github.workspace }}
 
           echo pwd: $PWD
           echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
@@ -91,7 +87,7 @@ jobs:
           
           echo "setting PYTHONPATH"
           export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
-          export PYTHONPATH=${PYTHONPATH}:./:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
+          export PYTHONPATH=${PYTHONPATH}:./:${{ github.workspace }}/remoteswinglibrary-2.3.1.jar
           export
                     
           mkdir Results
