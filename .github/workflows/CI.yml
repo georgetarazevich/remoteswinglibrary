@@ -1,5 +1,4 @@
-name: Testing App with RemoteSwingLibrary
-
+name: Testing GUI veraPDF with RemoteSwingLibrary and Robot Framework
 on: [push, pull_request]
 
 jobs:
