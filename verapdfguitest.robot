@@ -1,5 +1,4 @@
 *** Settings ***
-Library   SSHLibrary
 Library   RemoteSwingLibrary
 # Resource  ../resource.robot    # outside of repo. Contains real username and password
 
@@ -14,6 +13,18 @@ ${listIndex}            0
 *** Test Cases ***
 Choose File From File Chooser
     Start Application    my_app    java -jar /home/verapdf/bin/greenfield-apps-1.23.147.jar 5 seconds
+    Select Main Window
+    List Components In Context
+    pushButton    ${fileChooserButton}
+    chooseFromFileChooser    ${fileToChoose}
+    Select Dialog    regexp=Error.*
+    List Components In Context
+    # pushButton    OptionPane.button
+    pushButton    OK
+    [Teardown]    System Exit
+
+Choose File From File Chooser v2
+    Start Application    my_app    /home/verapdf/verapdf-gui 5 seconds
     Select Main Window
     List Components In Context
     pushButton    ${fileChooserButton}
