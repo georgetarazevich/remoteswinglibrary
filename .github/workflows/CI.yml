@@ -137,7 +137,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         if: success() || failure()
         with:
-          name: Test Results
+          name: Results
           path: "./Results"
       # - uses: actions/download-artifact@v3
       #   with:
@@ -146,13 +146,15 @@ jobs:
     # - name: Robot Framework
     #   uses: tarathep/robotframework-github-action@v1.0
   generate_report:
+    if: always()
+    needs: [jobs]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Download reports
         uses: actions/download-artifact@v1
         with:
-          name: Test Results
+          name: Results
       - name: Send report to commit
         uses: joonvena/robotframework-reporter-action@v2.1
         with:
