@@ -134,28 +134,31 @@ jobs:
           export ROBOT_OPTIONS="--outputdir Results"
           robot  ./tests/*.robot
 
+      - name: Generating report
       - uses: actions/upload-artifact@v1
         if: success() || failure()
         with:
           name: Results
           path: "./Results"
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: Test Results
-      #     path: ~/download/path1
-    # - name: Robot Framework
-    #   uses: tarathep/robotframework-github-action@v1.0
-    
-  generate_report:
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Download reports
-        uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v3
         with:
           name: Results
+          path: ~/download/path1
       - name: Send report to commit
         uses: joonvena/robotframework-reporter-action@v2.1
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+  # generate_report:
+  #   if: always()
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Download reports
+  #       uses: actions/download-artifact@v1
+  #       with:
+  #         name: Results
+  #     - name: Send report to commit
+  #       uses: joonvena/robotframework-reporter-action@v2.1
+  #       with:
+  #         gh_access_token: ${{ secrets.GITHUB_TOKEN }}
