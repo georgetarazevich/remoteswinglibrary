@@ -1,7 +1,6 @@
 name: Testing veraPDF GUI with RemoteSwingLibrary and Robot Framework
-on: 
-    schedule:
-      - cron: "*/5 * * * *"
+on: [push, pull_request]
+
 jobs:
   veraPDF-GUI-check:
     runs-on: ubuntu-latest
@@ -10,7 +9,7 @@ jobs:
     strategy:
       matrix:
         java: [ '8', '11' ]
-    name: Running on Java ${{ matrix.Java }} ...
+    name: Running on Java ${{ matrix.Java }} 
 
     steps:
       - uses: actions/checkout@v3
