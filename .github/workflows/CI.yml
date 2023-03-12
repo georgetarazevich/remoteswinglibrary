@@ -147,7 +147,7 @@ jobs:
           path: "./"
       - uses: actions/download-artifact@v3
         with:
-          name: my-artifact
+          name: Test Results
           path: ~/download/path1
     # - name: Robot Framework
       #   uses: tarathep/robotframework-github-action@v1.0
