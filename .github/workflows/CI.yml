@@ -22,33 +22,23 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ matrix.java }}
 
-      # - name: Set up Python 3.10
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: 3.10
-
-      - name: Run tests on Linux
+      - name: Preparing Linux packages(veraPDf, Python, xvfb, unzip)
         if: runner.os == 'Linux'
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
           echo pwd: $PWD
           echo dir: $(ls ./)
           cd /home
           echo pwd: $PWD
-          # echo workspace: $(ls ${{ github.workspace }})
 
           sudo apt update -y
-          sudo apt install xvfb -y
 
+          sudo apt install xvfb -y
           sudo apt install python3 -y
           sudo apt install -y python3-pip
           sudo pip install robotframework
-
           sudo apt-get install unzip
 
           echo "Performing veraPDF installation ... "
-
           echo "#Downloading veraPDF, latest dev version ... unziping to $PWD" 
           curl -LO https://software.verapdf.org/dev/verapdf-installer.zip
           unzip verapdf-installer.zip
@@ -61,17 +51,16 @@ jobs:
           export veraPATH="/home/verapdf"
           echo "veraPATH: $veraPATH" 
 
+          echo "#Downloading auto-install.xml ..." 
           curl -LO  https://raw.githubusercontent.com/veraPDF/veraPDF-regression-tests/integration/tools/auto-install.xml
 
           #Definition of the 'PATH' to install veraPDF using the auto-install.xml file
           sed -i '5 c\        <installpath>'$(echo $veraPATH)'</installpath>' ./auto-install.xml
-
           echo $(cat auto-install.xml)
 
           veraizpack=$(ls | grep verapdf-izpack-installer)
           echo "veraizpack: $veraizpack"
 
-          #Performing installation
           echo "Performing installation veraPDF ... "
           java -jar "$veraizpack" auto-install.xml
 
@@ -84,58 +73,31 @@ jobs:
           python3 -m pip list
           whoami 
 
-          # sudo apt-get install x11-apps
-
-          # export DISPLAY=:0.0
-          # export DISPLAY=:99.0
-      # https://github.com/hajimehoshi/ebiten/issues/939
-      # - name: Test
-      #   env:
-      #     DISPLAY: ":99.0"
-      #   run: |
-      #     xvfb-run --auto-servernum  go test -race -v ./...
-
       - name: Running verapdf-gui
         run: |
-          # export DISPLAY=:99
-          # sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
-
-          # sudo apt install xvfb -y
-          # sudo yum install Xvfb -y
-
           export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x16 -ac -noreset & sleep 3
+
           echo "Running gui ..."
           /home/verapdf/verapdf-gui &
           ps aux       
 
-
-          java -jar /home/verapdf/bin/greenfield-apps-1.23.147.jar &
-          ps aux
-
-          echo "Running regression-tests ..."
           echo PATH: "$PATH"
-
-          # ${{ matrix.set_display }}
-          # mvn clean verify -Dexcludes=Webstart
-
           echo "cd to: /__w/remoteswinglibrary/remoteswinglibrary/"
-
           cd /__w/remoteswinglibrary/remoteswinglibrary/
 
           echo pwd: $PWD
-          echo running curl ...
+          echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
           curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
-          echo setting classpath
-          export CLASSPATH=.
+          
+          echo "setting PYTHONPATH"
           export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
           export PYTHONPATH=${PYTHONPATH}:./:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
-
           export
+                    
           mkdir Results
           echo dir: $(ls ./)
 
-          # robot --version
-
+          echo "Running regression-tests ..."
           export ROBOT_OPTIONS="--outputdir Results"
           robot  ./tests/*.robot
 
@@ -145,25 +107,3 @@ jobs:
         with:
           name: Results
           path: "./Results"
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: Results
-      #     path: ~/download/path1
-      # - name: Send report to commit
-      #   uses: joonvena/robotframework-reporter-action@v2.1
-      #   with:
-      #     gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-  # generate_report:
-  #   if: always()
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Download reports
-  #       uses: actions/download-artifact@v1
-  #       with:
-  #         name: Results
-  #     - name: Send report to commit
-  #       uses: joonvena/robotframework-reporter-action@v2.1
-  #       with:
-  #         gh_access_token: ${{ secrets.GITHUB_TOKEN }}
