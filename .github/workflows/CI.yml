@@ -1,7 +1,5 @@
 name: Testing veraPDF GUI with RemoteSwingLibrary and Robot Framework
 on: 
-    push:
-    pull_request:
     schedule:
       - cron: "*/5 * * * *"
 jobs:
