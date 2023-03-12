@@ -132,7 +132,8 @@ jobs:
 
           # robot --version
           
-          robot  ./tests/*.robot  --outputdir  ./Results
+          export ROBOT_OPTIONS="--outputdir Results"
+          robot  ./tests/*.robot
 
       - uses: actions/upload-artifact@v1
         if: success() || failure()
