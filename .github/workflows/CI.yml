@@ -127,11 +127,12 @@ jobs:
           export PYTHONPATH=${PYTHONPATH}:./:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
 
           export
+          mkdir Results
           echo dir: $(ls ./)
 
           # robot --version
-          mkdir Results
-          robot ./tests/*.robot -d Results
+          
+          robot ./tests/*.robot --outputdir ./Results
 
       - uses: actions/upload-artifact@v1
         if: success() || failure()
