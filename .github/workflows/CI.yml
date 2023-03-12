@@ -140,14 +140,14 @@ jobs:
         with:
           name: Results
           path: "./Results"
-      - uses: actions/download-artifact@v3
-        with:
-          name: Results
-          path: ~/download/path1
-      - name: Send report to commit
-        uses: joonvena/robotframework-reporter-action@v2.1
-        with:
-          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: Results
+      #     path: ~/download/path1
+      # - name: Send report to commit
+      #   uses: joonvena/robotframework-reporter-action@v2.1
+      #   with:
+      #     gh_access_token: ${{ secrets.GITHUB_TOKEN }}
 
   # generate_report:
   #   if: always()
