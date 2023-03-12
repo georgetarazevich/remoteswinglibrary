@@ -3,7 +3,7 @@ name: Testing App with RemoteSwingLibrary
 on: [push, pull_request]
 
 jobs:
-  container-test-job:
+  container-gui-test-job:
     runs-on: ubuntu-latest
     container:
       image: x11vnc/docker-desktop
@@ -139,6 +139,6 @@ jobs:
           echo dir: $($PWD  ls ./)
 
           # robot --version
-          robot ./sshtest.robot
+          robot ./*.robot
       # - name: Robot Framework
       #   uses: tarathep/robotframework-github-action@v1.0
