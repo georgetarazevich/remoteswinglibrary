@@ -26,10 +26,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           echo pwd: $PWD
-          repoFOLDER=$PWD
           echo dir: $(ls ./)
-          echo "repository variable : ${{ vars.REPOSITORY_VAR }}"
-          echo GITHUB_WORKSPACE: $GITHUB_WORKSPACE
 
           sudo apt update -y
 
@@ -81,8 +78,8 @@ jobs:
 
           echo "Running gui ..."      
           echo PATH: "$PATH"
-          echo "cd to: $repoFOLDER"
-          cd $repoFOLDER
+          echo "cd to: $GITHUB_WORKSPACE"
+          cd $GITHUB_WORKSPACE
 
           echo pwd: $PWD
           echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
@@ -90,7 +87,7 @@ jobs:
           
           echo "setting PYTHONPATH"
           export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
-          export PYTHONPATH=${PYTHONPATH}:./:$repoFOLDER/remoteswinglibrary-2.3.1.jar
+          export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
           export
                     
           mkdir Results
