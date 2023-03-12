@@ -130,6 +130,7 @@ jobs:
           echo dir: $(ls ./)
 
           # robot --version
+          mkdir Results
           robot ./tests/*.robot -d Results
 
       - uses: actions/upload-artifact@v1
