@@ -132,11 +132,11 @@ jobs:
           curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
           echo setting classpath
           export CLASSPATH=.
-          export CLASSPATH=$CLASSPATH:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
+          export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
           export PYTHONPATH=${PYTHONPATH}:./:/__w/remoteswinglibrary/remoteswinglibrary/remoteswinglibrary-2.3.1.jar
 
           export
-          echo dir: $($PWD  ls ./)
+          echo dir: $(ls ./)
 
           # robot --version
           robot ./*.robot
