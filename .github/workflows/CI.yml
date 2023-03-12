@@ -1,9 +1,6 @@
 name: Testing veraPDF GUI with RemoteSwingLibrary and Robot Framework
 on: [push, pull_request]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
   veraPDF-GUI-check:
     runs-on: ubuntu-latest
