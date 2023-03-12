@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: x11vnc/docker-desktop
-          
+
     steps:
       - uses: actions/checkout@v3
       - name: Check for dockerenv file
@@ -83,15 +83,14 @@ jobs:
 
           # export DISPLAY=:0.0
           # export DISPLAY=:99.0
-# https://github.com/hajimehoshi/ebiten/issues/939
+      # https://github.com/hajimehoshi/ebiten/issues/939
       # - name: Test
       #   env:
       #     DISPLAY: ":99.0"
       #   run: |
       #     xvfb-run --auto-servernum  go test -race -v ./...
 
-      
-      - name: Running verapdf-gui 
+      - name: Running verapdf-gui
         run: |
           # export DISPLAY=:99
           # sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
@@ -131,7 +130,7 @@ jobs:
           echo dir: $(ls ./)
 
           # robot --version
-          
+
           export ROBOT_OPTIONS="--outputdir Results"
           robot  ./tests/*.robot
 
@@ -145,4 +144,16 @@ jobs:
       #     name: Test Results
       #     path: ~/download/path1
     # - name: Robot Framework
-      #   uses: tarathep/robotframework-github-action@v1.0
+    #   uses: tarathep/robotframework-github-action@v1.0
+  generate_report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download reports
+        uses: actions/download-artifact@v1
+        with:
+          name: reports
+      - name: Send report to commit
+        uses: joonvena/robotframework-reporter-action@v2.1
+        with:
+          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
