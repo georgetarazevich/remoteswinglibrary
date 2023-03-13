@@ -76,8 +76,7 @@ jobs:
           cd $GITHUB_WORKSPACE
           echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
           curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
-          export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
-          export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
+          # export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
           export
                     
           mkdir Results
@@ -86,10 +85,10 @@ jobs:
       - name: Running verapdf-gui
         run: |
           echo "Running regression-tests: robot  ./tests/"
-
+          export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
+          
           export ROBOT_OPTIONS="--outputdir Results"
-
-          robot  ./tests/
+          robot  $GITHUB_WORKSPACE/tests/
 
       - name: Generating report
         uses: actions/upload-artifact@v1
