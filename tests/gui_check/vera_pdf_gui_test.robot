@@ -13,13 +13,14 @@ ${veraPATH}             ${EXECDIR}/verapdf
 
 
 *** Test Cases ***
-Choose File From File Chooser
+Checking logs 
     Log    ${CURDIR}
     Log    ${EXECDIR}
     Log    ${veraPATH}
 
 
-Choose File From File Chooser v2
+Checking logs v2
     Log    CURDIR:    ${CURDIR}
     Log    EXECDIR:    ${EXECDIR}
     Log    veraPATH:    ${veraPATH}
+    
