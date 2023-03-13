@@ -92,6 +92,7 @@ jobs:
                     
           mkdir Results
           echo dir: $(ls ./)
+          echo dir2: $(ls ~/)
 
           echo "Running regression-tests ..."
           export ROBOT_OPTIONS="--outputdir Results"
