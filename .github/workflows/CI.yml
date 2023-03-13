@@ -69,9 +69,7 @@ jobs:
           python3 --version
           python3 -m pip list
           whoami 
-
-          export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x16 -ac -noreset & sleep 3
-
+          
           echo PATH: "$PATH"
           cd $GITHUB_WORKSPACE
           echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
@@ -85,6 +83,7 @@ jobs:
       - name: Running verapdf-gui
         run: |
           echo "Running regression-tests: robot  ./tests/"
+          export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x16 -ac -noreset & sleep 3
           export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
 
           export ROBOT_OPTIONS="--outputdir Results"
