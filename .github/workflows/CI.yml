@@ -86,9 +86,9 @@ jobs:
         run: |
           echo "Running regression-tests: robot  ./tests/"
           export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
-          
+
           export ROBOT_OPTIONS="--outputdir Results"
-          robot  $GITHUB_WORKSPACE/tests/
+          robot  ./tests/
 
       - name: Generating report
         uses: actions/upload-artifact@v1
