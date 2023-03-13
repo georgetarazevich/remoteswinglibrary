@@ -91,7 +91,7 @@ jobs:
           mkdir Results
           echo dir: $(ls ./)
 
-          echo "Running regression-tests ..."
+          echo "Running regression-tests: robot  ./tests/*.robot"
           export ROBOT_OPTIONS="--outputdir Results"
           robot  ./tests/*.robot
 
