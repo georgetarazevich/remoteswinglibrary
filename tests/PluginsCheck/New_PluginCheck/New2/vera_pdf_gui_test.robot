@@ -11,7 +11,7 @@ ${listIndex}            0
 
 
 *** Test Cases ***
-Choose File From File Chooser v22
+ChooseFileFromFileChooserv223
     Start Application    my_app    ${EXECDIR}/verapdf/verapdf-gui 5 seconds
     Select Main Window
     List Components In Context
