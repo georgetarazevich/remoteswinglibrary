@@ -17,8 +17,3 @@ Checking logs
     Log    ${CURDIR}
     Log    ${EXECDIR}
     Log    ${veraPATH}
-
-Checking logs v2
-    Log    CURDIR:    ${CURDIR}
-    Log    EXECDIR:    ${EXECDIR}
-    Log    veraPATH:    ${veraPATH}
