@@ -83,9 +83,10 @@ jobs:
       - name: Running verapdf-gui
         run: |
           echo "Running regression-tests: robot  ./tests/"
+          export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
           export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
           export ROBOT_OPTIONS="--outputdir Results"
-          
+
           robot  ./tests/
 
       - name: Generating report
