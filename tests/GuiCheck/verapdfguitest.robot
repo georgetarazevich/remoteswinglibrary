@@ -17,3 +17,4 @@ Checking logs
     Log    ${CURDIR}
     Log    ${EXECDIR}
     Log    ${veraPATH}
+    Log Variables
