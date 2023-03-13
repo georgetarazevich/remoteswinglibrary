@@ -75,10 +75,6 @@ jobs:
           echo PATH: "$PATH"
           echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
           curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
-
-          echo "setting PYTHONPATH"
-          export CLASSPATH=$CLASSPATH:./remoteswinglibrary-2.3.1.jar
-          export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
           export
                     
           mkdir Results
@@ -87,7 +83,9 @@ jobs:
       - name: Running verapdf-gui
         run: |
           echo "Running regression-tests: robot  ./tests/"
+          export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
           export ROBOT_OPTIONS="--outputdir Results"
+          
           robot  ./tests/
 
       - name: Generating report
