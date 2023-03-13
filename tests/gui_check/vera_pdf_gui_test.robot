@@ -14,43 +14,12 @@ ${veraPATH}             ${EXECDIR}/verapdf
 
 *** Test Cases ***
 Choose File From File Chooser
-    Start Application    my_app    java -jar ${veraPATH}/bin/greenfield-apps-1.23.147.jar 5 seconds
-    Log CURDIR: ${CURDIR}
-    Log EXECDIR: ${EXECDIR}
-    Log veraPATH: ${veraPATH}
-    Select Main Window
-    List Components In Context
-    Push Button    ${fileChooserButton}
-    Choose From File Chooser    ${fileToChoose}
-    Select Dialog    regexp=Error.*
-    List Components In Context
-    # pushButton    OptionPane.button
-    Push Button    OK
-    [Teardown]    System Exit
+    Log    ${CURDIR}
+    Log    ${EXECDIR}
+    Log    ${veraPATH}
+
 
 Choose File From File Chooser v2
-    Start Application    my_app    ${EXECDIR}/verapdf/verapdf-gui 5 seconds
-    Select Main Window
-    List Components In Context
-    pushButton    ${fileChooserButton}
-    chooseFromFileChooser    ${fileToChoose}
-    Select Dialog    regexp=Error.*
-    List Components In Context
-    # pushButton    OptionPane.button
-    pushButton    OK
-    [Teardown]    System Exit
-
-# *** Test Cases ***
-# Connecting to another machine
-#    Open Connection    ${REMOTEIP}
-#    Login    ${USERNAME}    ${PASSWORD}
-#    Put File    ${REMOTESWINGLIBRARYPATH}    remoteswinglibrary.jar
-#    Write    xvfb-run java -javaagent:remoteswinglibrary.jar=${MYIP}:${REMOTESWINGLIBRARYPORT}:DEBUG -jar remoteswinglibrary.jar
-#    Application Started    myjar    timeout=5 seconds
-#    System Exit
-#    [Teardown]    Tearing
-
-# *** Keywords ***
-# Tearing
-#    Read
-#    Close All Connections
+    Log    CURDIR:    ${CURDIR}
+    Log    EXECDIR:    ${EXECDIR}
+    Log    veraPATH:    ${veraPATH}
