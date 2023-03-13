@@ -69,7 +69,7 @@ jobs:
           python3 --version
           python3 -m pip list
           whoami 
-          
+
           echo PATH: "$PATH"
           cd $GITHUB_WORKSPACE
           echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
@@ -87,7 +87,7 @@ jobs:
           export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
 
           export ROBOT_OPTIONS="--outputdir Results"
-          robot  ./tests/
+          robot  $GITHUB_WORKSPACE/tests/
 
       - name: Generating report
         uses: actions/upload-artifact@v1
