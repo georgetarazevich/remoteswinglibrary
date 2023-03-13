@@ -12,11 +12,11 @@ ${listIndex}            0
 
 *** Test Cases ***
 Choose File From File Chooser
-    Start Application    my_app    java -jar verapdf/bin/greenfield-apps-1.23.147.jar 5 seconds
+    Start Application    my_app    java -jar ${EXECDIR}/verapdf/bin/greenfield-apps-1.23.147.jar 5 seconds
     Select Main Window
     List Components In Context
-    pushButton    ${fileChooserButton}
-    chooseFromFileChooser    ${fileToChoose}
+    Push Button    ${fileChooserButton}
+    Choose From File Chooser    ${fileToChoose}
     Select Dialog    regexp=Error.*
     List Components In Context
     # pushButton    OptionPane.button
@@ -27,12 +27,12 @@ Choose File From File Chooser v2
     Start Application    my_app    ${EXECDIR}/verapdf/verapdf-gui 5 seconds
     Select Main Window
     List Components In Context
-    pushButton    ${fileChooserButton}
-    chooseFromFileChooser    ${fileToChoose}
+    Push Button    ${fileChooserButton}
+    Choose From File Chooser    ${fileToChoose}
     Select Dialog    regexp=Error.*
     List Components In Context
     # pushButton    OptionPane.button
-    pushButton    OK
+    Push Button    OK
     [Teardown]    System Exit
 
 # *** Test Cases ***

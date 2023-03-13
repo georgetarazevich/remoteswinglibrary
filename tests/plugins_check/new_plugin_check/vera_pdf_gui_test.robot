@@ -12,7 +12,7 @@ ${listIndex}            0
 
 *** Test Cases ***
 Choose File From File Chooser
-    Start Application    my_app    java -jar verapdf/bin/greenfield-apps-1.23.147.jar 5 seconds
+    Start Application    my_app    java -jar ${EXECDIR}/verapdf/bin/greenfield-apps-1.23.147.jar 5 seconds
     Select Main Window
     List Components In Context
     pushButton    ${fileChooserButton}
