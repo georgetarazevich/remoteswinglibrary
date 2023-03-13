@@ -36,8 +36,6 @@ jobs:
           sudo pip install robotframework 
           sudo apt install unzip -y 
 
-          cd /home
-          echo pwd: $PWD
           echo "Performing veraPDF installation ... "
           echo "#Downloading veraPDF, latest dev version ... unziping to $PWD" 
           curl -LO https://software.verapdf.org/dev/verapdf-installer.zip
@@ -47,7 +45,7 @@ jobs:
           veradir=$(ls | grep verapdf-greenfield)
           cd "$veradir"
 
-          export veraPATH="/home/verapdf"
+          export veraPATH="$GITHUB_WORKSPACE/verapdf"
           echo "veraPATH: $veraPATH" 
 
           echo "#Downloading auto-install.xml ..." 
@@ -63,8 +61,8 @@ jobs:
           echo "Performing installation veraPDF ... "
           java -jar "$veraizpack" auto-install.xml
 
-          echo verapdf dir: $(ls /home/verapdf)
-          /home/verapdf/verapdf --version
+          echo verapdf dir: $(ls $GITHUB_WORKSPACE/verapdf)
+          $GITHUB_WORKSPACE/verapdf/verapdf --version
 
           java -version
           javac -version
@@ -78,10 +76,10 @@ jobs:
 
           echo "Running gui ..."      
           echo PATH: "$PATH"
-          echo "cd to: $GITHUB_WORKSPACE"
-          cd $GITHUB_WORKSPACE
+          # echo "cd to: $GITHUB_WORKSPACE"
+          # cd $GITHUB_WORKSPACE
 
-          echo pwd: $PWD
+          # echo pwd: $PWD
           echo "running curl to get remoteswinglibrary-2.3.1.jar ..."
           curl -LO https://repo1.maven.org/maven2/org/robotframework/remoteswinglibrary/2.3.1/remoteswinglibrary-2.3.1.jar
           
@@ -92,7 +90,6 @@ jobs:
                     
           mkdir Results
           echo dir: $(ls ./)
-          echo dir2: $(ls ~/)
 
           echo "Running regression-tests ..."
           export ROBOT_OPTIONS="--outputdir Results"
