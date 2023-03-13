@@ -91,9 +91,9 @@ jobs:
           mkdir Results
           echo dir: $(ls ./)
 
-          echo "Running regression-tests: robot  ./tests/*.robot"
+          echo "Running regression-tests: robot  ./tests/"
           export ROBOT_OPTIONS="--outputdir Results"
-          robot  ./tests/*.robot
+          robot  ./tests/
 
       - name: Generating report
         uses: actions/upload-artifact@v1
