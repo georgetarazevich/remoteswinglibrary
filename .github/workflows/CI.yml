@@ -83,7 +83,7 @@ jobs:
 
       - name: Running verapdf-gui
         run: |
-          echo "Running regression-tests: robot  ./tests/"
+          echo "Running regression-tests ..."
           export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x16 -ac -noreset & sleep 3
           export PYTHONPATH=${PYTHONPATH}:./:$GITHUB_WORKSPACE/remoteswinglibrary-2.3.1.jar
 
